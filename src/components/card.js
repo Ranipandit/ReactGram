@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import CommentIcon from '@material-ui/icons/QuestionAnswer';
-import IconButton from '@material-ui/core/IconButton';
 
 import posts from '../data/posts';
 
@@ -33,12 +32,24 @@ const styles = theme => ({
     },
     button: {
         margin: theme.spacing.unit*2,
-        paddingLeft: theme.spacing.unit*5,
-        paddingRight: theme.spacing.unit*5,
+        paddingLeft: theme.spacing.unit*6,
+        paddingRight: theme.spacing.unit*6,
+        border: '1px solid rgba(182, 185, 199, 0.5)',
+        color:'#5e47e0',
     },
 });
 
 class Grids extends Component {
+    constructor(){
+        super()
+        this.state = {
+            clicks:posts.likes,
+        }
+    }
+    clickHandler = () => {
+        this.setState({ clicks : this.state.clicks + 1})
+        console.log(this.state.clicks)
+    } 
     render() {
         const { classes } = this.props;
         return (
@@ -55,11 +66,11 @@ class Grids extends Component {
                             <CardContent>
                                 <Typography component="p">{data.caption}</Typography>
                             </CardContent>
-                            <Button variant="outlined" className={classes.button}>
+                            <Button variant="outlined" color="primary" className={classes.button} onClick={this.clickHandler}>
                                 {data.likes}
                                 <FavoriteIcon />
                             </Button>
-                            <Button variant="outlined" className={classes.button}>
+                            <Button variant="outlined" color="primary" className={classes.button}>
                                 <CommentIcon />
                             </Button>
                         </Card>
