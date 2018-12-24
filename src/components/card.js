@@ -5,9 +5,14 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import CommentIcon from '@material-ui/icons/QuestionAnswer';
+import IconButton from '@material-ui/core/IconButton';
+
 import posts from '../data/posts';
 
-const styles = {
+const styles = theme => ({
     root: {
         display:'flex',
         flexWrap:'wrap',
@@ -15,20 +20,23 @@ const styles = {
         margin:'auto'
     },
     card: {
-        maxWidth: 375,
+        maxWidth: 345,
         flexGrow:1,
-        marginLeft:"10px",
-        marginRight:"10px",
-        marginBottom:"10px",
-        border: '1px solid #edeeed',
+        margin: theme.spacing.unit*2,
+        border:'1px solid #edeeed',
         background:'#fff',
         boxShadow: '0 0 0 5px rgba(0,0,0,0.03)',
       },
       media: {
-        width:'375px',
-        paddingTop: '56.25%',
+        width:'345px',
+        paddingTop: '95%',
     },
-};
+    button: {
+        margin: theme.spacing.unit*2,
+        paddingLeft: theme.spacing.unit*5,
+        paddingRight: theme.spacing.unit*5,
+    },
+});
 
 class Grids extends Component {
     render() {
@@ -46,8 +54,14 @@ class Grids extends Component {
                             />
                             <CardContent>
                                 <Typography component="p">{data.caption}</Typography>
-                                <Typography component="p">{data.likes}</Typography>
                             </CardContent>
+                            <Button variant="outlined" className={classes.button}>
+                                {data.likes}
+                                <FavoriteIcon />
+                            </Button>
+                            <Button variant="outlined" className={classes.button}>
+                                <CommentIcon />
+                            </Button>
                         </Card>
                         )
                     })
