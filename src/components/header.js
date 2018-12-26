@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = {
+const styles = theme => ({
     root: {
         width: '100%',
     },
@@ -11,8 +11,9 @@ const styles = {
         fontFamily:"'Cookie', cursive",
         textAlign:'center',
         color: '#125688',
+        marginBottom: theme.spacing.unit *2, 
     }
-};
+});
   
 class Header extends Component {
     render() {
