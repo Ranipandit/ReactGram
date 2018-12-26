@@ -23,12 +23,11 @@ const styles = theme => ({
         flexGrow:1,
         margin: theme.spacing.unit*2,
         border:'1px solid #edeeed',
-        background:'#fff',
         boxShadow: '0 0 0 5px rgba(0,0,0,0.03)',
       },
       media: {
         width:'345px',
-        paddingTop: '95%',
+        paddingTop: '100%',
     },
     button: {
         margin: theme.spacing.unit*2,
