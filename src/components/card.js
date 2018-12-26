@@ -39,23 +39,25 @@ const styles = theme => ({
     },
 });
 
-class Grids extends Component {
-    constructor(){
-        super()
+class Posts extends Component {
+    constructor(props){
+        super(props)        
         this.state = {
-            clicks:posts.likes,
+            post:posts
         }
     }
-    clickHandler = () => {
-        this.setState({ clicks : this.state.clicks + 1})
-        console.log(this.state.clicks)
-    } 
+    clickHandler = (i) => {
+        const { post }  = this.state;
+        post[i].likes = post[i].likes + 1
+        this.setState({post})
+    }
+
     render() {
         const { classes } = this.props;
         return (
             <div className={classes.root}>
                 {
-                posts.map((data, index) => {
+                posts.map((data,index) => {
                     return (
                         <Card className={classes.card} key={index}>
                             <CardMedia
@@ -66,7 +68,7 @@ class Grids extends Component {
                             <CardContent>
                                 <Typography component="p">{data.caption}</Typography>
                             </CardContent>
-                            <Button variant="outlined" color="primary" className={classes.button} onClick={this.clickHandler}>
+                            <Button variant="outlined" color="primary" className={classes.button} onClick={() => this.clickHandler(index)}>
                                 {data.likes}
                                 <FavoriteIcon />
                             </Button>
@@ -82,8 +84,8 @@ class Grids extends Component {
     }
 }
 
-Grids.propTypes = {
+Posts.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Grids);
+export default withStyles(styles)(Posts);

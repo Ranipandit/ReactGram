@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Header from './components/header';
-import Card from './components/card';
+import Posts from './components/card';
 
 class App extends Component {
   render() {
     return (
       <div>
         < Header />
-        < Card />
+        < Posts />
       </div>
     );
   }
