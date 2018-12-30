@@ -17,11 +17,13 @@ const styles = theme => ({
         margin: 'auto',
         boxShadow: '0 0 0 5px rgba(0,0,0,0.03)',
         border: '1px solid #edeeed',
+        textAlign: "Center"
 
     },
     card: {
         maxWidth: 500,
         flexGrow: 1,
+        margin: 'auto',
         margin: theme.spacing.unit * 2,
     },
     media: {
@@ -37,8 +39,8 @@ const styles = theme => ({
         color: '#5e47e0',
     },
     textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
+        marginLeft: theme.spacing.unit*6,
+        marginRight: theme.spacing.unit*6,
       },
 });
 
@@ -62,15 +64,21 @@ class Comments extends Component {
                             <CommentIcon />
                         </Button>
                     </Card>
-                    <Card>
+    
                         <TextField
                             id="outlined-dense"
-                            label="Dense"
+                            label="Author"
                             className={classes.textField}
                             margin="dense"
                             variant="outlined"
                         />
-                    </Card>
+                        <TextField
+                            id="outlined-dense"
+                            label="Comment"
+                            className={classes.textField}
+                            margin="dense"
+                            variant="outlined"
+                        />
                 </div>
             </div>
         );
