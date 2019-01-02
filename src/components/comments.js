@@ -8,6 +8,10 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import CommentIcon from '@material-ui/icons/QuestionAnswer';
 import Header from './header';
 import TextField from '@material-ui/core/TextField';
+import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
+
+
 
 const styles = theme => ({
     root: {
@@ -16,8 +20,7 @@ const styles = theme => ({
         maxWidth: 1200,
         margin: 'auto',
         boxShadow: '0 0 0 5px rgba(0,0,0,0.03)',
-        border: '1px solid #edeeed',
-        textAlign: "Center"
+        border: '1px solid #edeeed'
 
     },
     card: {
@@ -39,9 +42,9 @@ const styles = theme => ({
         color: '#5e47e0',
     },
     textField: {
-        marginLeft: theme.spacing.unit*6,
-        marginRight: theme.spacing.unit*6,
-      },
+        marginLeft: theme.spacing.unit * 6,
+        marginRight: theme.spacing.unit * 6,
+    },
 });
 
 class Comments extends Component {
@@ -64,7 +67,11 @@ class Comments extends Component {
                             <CommentIcon />
                         </Button>
                     </Card>
-    
+                    <div>
+                        <Typography component="p">hfhjdhgyu</Typography>
+                        <Divider />
+                        <Typography component="p">hfhjdhgyufggggggggggg</Typography>
+                        <Divider />
                         <TextField
                             id="outlined-dense"
                             label="Author"
@@ -79,6 +86,7 @@ class Comments extends Component {
                             margin="dense"
                             variant="outlined"
                         />
+                    </div>
                 </div>
             </div>
         );
