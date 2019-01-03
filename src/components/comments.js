@@ -56,75 +56,90 @@ class Comments extends Component {
     constructor() {
         super()
         this.state = {
-            comments : [],
-            value : ''
+            data: [],
+            author: "",
+            comment:"",
+            commentCounts: 0
         }
     }
 
     handleChange = (e) => {
         this.setState({
-            [e.target.name] : e.target.value
+            [e.target.name]: e.target.value
         })
         console.log(e.target.value)
     }
-    
+
     handleCommits = (e) => {
         if (e.charCode === 13) {
-            alert('Enter... (KeyPress, use charCode)');
+            const data = this.state.data
+            const author = this.state.author
+            const comment = this.state.comment
+            const commentCounts = this.state.commentCounts
+            data.push({author:author,comment:comment})
+            console.log(data)
+            this.setState({
+                data,
+                author: "",
+                comment: "",
+                commentCounts : commentCounts + 1
+            })
         }
     }
 
     render() {
         const { classes } = this.props;
+        const { data,commentCounts } = this.state;
         return (
             <div>
                 < Header />
                 <div className={classes.root}>
                     <Card className={classes.card}>
-                        {/* <CardMedia
+                        <CardMedia
                             className={classes.media}
                             image=""
                             title="Media"
-                        /> */}
+                        />
                         <Button variant="outlined" color="primary" className={classes.button}>
                             <FavoriteIcon />
                         </Button>
                         <Button variant="outlined" color="primary" className={classes.button}>
-                            <CommentIcon />
+                            {commentCounts}<CommentIcon />
                         </Button>
                     </Card>
                     <div>
-                        <div className={classes.commentBox}>
-                            <span className={classes.authorText}>Rani</span>
-                            <span>Wow :) so nice </span>
-                            <Divider />
-                        </div>
-                        <TextField
-                            id="outlined-dense"
-                            label="Author"
-                            className={classes.textField}
-                            margin="dense"
-                            variant="outlined"
-                            onKeyPress={this.handleCommits}
-                            onChange={this.handleChange}
-                            name = "author"
-                        />
-                        <TextField
-                            id="outlined-dense"
-                            label="Comment"
-                            className={classes.textField}
-                            margin="dense"
-                            variant="outlined"
-                            onChange={this.handleChange}
-                            name = "comment"
-                            onKeyPress={this.handleCommits}
+                        {data === [] ? null : data.map((comments, index) => {
+                            return <div className={classes.commentBox} key={index}>
+                                <span className={classes.authorText}>{comments.author}</span>
+                                <span>{comments.comment}</span>
+                                <Divider />
+                            </div>
+                        })}
+            
+                            <TextField
+                                id="outlined-dense"
+                                label="Author"
+                                className={classes.textField}
+                                margin="dense"
+                                variant="outlined"
+                                onKeyPress={this.handleCommits}
+                                onChange={this.handleChange}
+                                name="author"
+                                value = {this.state.author}
+                            />
+                            <TextField
+                                id="outlined-dense"
+                                label="Comment"
+                                className={classes.textField}
+                                margin="dense"
+                                variant="outlined"
+                                onChange={this.handleChange}
+                                name="comment"
+                                onKeyPress={this.handleCommits}
+                                value = {this.state.comment}
 
-                        />
-                    </div><CardMedia
-                            className={classes.media}
-                            image=""
-                            title="Media"
-                        />
+                            />
+                    </div>
                 </div>
             </div>
         );
