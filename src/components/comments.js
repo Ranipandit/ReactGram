@@ -9,8 +9,6 @@ import CommentIcon from '@material-ui/icons/QuestionAnswer';
 import Header from './header';
 import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
-import Typography from '@material-ui/core/Typography';
-
 
 
 const styles = theme => ({
@@ -45,9 +43,37 @@ const styles = theme => ({
         marginLeft: theme.spacing.unit * 6,
         marginRight: theme.spacing.unit * 6,
     },
+    authorText: {
+        fontWeight: "bold",
+        padding: theme.spacing.unit
+    },
+    commentBox: {
+        margin: theme.spacing.unit * 4
+    }
 });
 
 class Comments extends Component {
+    constructor() {
+        super()
+        this.state = {
+            comments : [],
+            value : ''
+        }
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name] : e.target.value
+        })
+        console.log(e.target.value)
+    }
+    
+    handleCommits = (e) => {
+        if (e.charCode === 13) {
+            alert('Enter... (KeyPress, use charCode)');
+        }
+    }
+
     render() {
         const { classes } = this.props;
         return (
@@ -55,11 +81,11 @@ class Comments extends Component {
                 < Header />
                 <div className={classes.root}>
                     <Card className={classes.card}>
-                        <CardMedia
+                        {/* <CardMedia
                             className={classes.media}
                             image=""
                             title="Media"
-                        />
+                        /> */}
                         <Button variant="outlined" color="primary" className={classes.button}>
                             <FavoriteIcon />
                         </Button>
@@ -68,16 +94,20 @@ class Comments extends Component {
                         </Button>
                     </Card>
                     <div>
-                        <Typography component="p">hfhjdhgyu</Typography>
-                        <Divider />
-                        <Typography component="p">hfhjdhgyufggggggggggg</Typography>
-                        <Divider />
+                        <div className={classes.commentBox}>
+                            <span className={classes.authorText}>Rani</span>
+                            <span>Wow :) so nice </span>
+                            <Divider />
+                        </div>
                         <TextField
                             id="outlined-dense"
                             label="Author"
                             className={classes.textField}
                             margin="dense"
                             variant="outlined"
+                            onKeyPress={this.handleCommits}
+                            onChange={this.handleChange}
+                            name = "author"
                         />
                         <TextField
                             id="outlined-dense"
@@ -85,8 +115,16 @@ class Comments extends Component {
                             className={classes.textField}
                             margin="dense"
                             variant="outlined"
+                            onChange={this.handleChange}
+                            name = "comment"
+                            onKeyPress={this.handleCommits}
+
                         />
-                    </div>
+                    </div><CardMedia
+                            className={classes.media}
+                            image=""
+                            title="Media"
+                        />
                 </div>
             </div>
         );
