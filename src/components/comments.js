@@ -9,6 +9,7 @@ import CommentIcon from '@material-ui/icons/QuestionAnswer';
 import Header from './header';
 import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
+import Delete from '@material-ui/icons/Clear';
 
 
 const styles = theme => ({
@@ -72,10 +73,7 @@ class Comments extends Component {
 
     handleCommits = (e) => {
         if (e.charCode === 13) {
-            const data = this.state.data
-            const author = this.state.author
-            const comment = this.state.comment
-            const commentCounts = this.state.commentCounts
+            const {data, author,comment,commentCounts} = this.state
             data.push({author:author,comment:comment})
             console.log(data)
             this.setState({
@@ -85,6 +83,15 @@ class Comments extends Component {
                 commentCounts : commentCounts + 1
             })
         }
+    }
+
+    delete = (index) => {
+        const { data,commentCounts } = this.state
+        data.splice( index , 1);
+        this.setState({
+            data,
+            commentCounts : commentCounts - 1
+        })
     }
 
     render() {
@@ -112,6 +119,7 @@ class Comments extends Component {
                             return <div className={classes.commentBox} key={index}>
                                 <span className={classes.authorText}>{comments.author}</span>
                                 <span>{comments.comment}</span>
+                                <Delete onClick={this.delete} />
                                 <Divider />
                             </div>
                         })}
