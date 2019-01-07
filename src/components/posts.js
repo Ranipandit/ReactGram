@@ -10,7 +10,6 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import CommentIcon from '@material-ui/icons/QuestionAnswer';
 import { Link } from 'react-router-dom';
 import Header from './header';
-import posts from '../data/posts-data';
 
 const styles = theme => ({
     root: {
@@ -41,26 +40,14 @@ const styles = theme => ({
 });
 
 class Posts extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            post: posts
-        }
-    }
-    likeHandler = (i) => {
-        const { post } = this.state;
-        post[i].likes = post[i].likes + 1
-        this.setState({ post })
-    }
-
     render() {
-        const { classes } = this.props;
+        const { classes,post } = this.props;
         return (
             <div>
                 < Header />
                 <div className={classes.root}>
                     {
-                        posts.map((data, index) => {
+                        post.map((data, index) => {
 
                             return (
                                 <Card className={classes.card} key={index}>
@@ -69,12 +56,13 @@ class Posts extends Component {
                                             className={classes.media}
                                             image={"/images/" + data.display_src}
                                             title="Media"
+                                            
                                         />
                                     </Link>
                                     <CardContent>
                                         <Typography component="p">{data.caption}</Typography>
-                                    </CardContent>
-                                    <Button variant="outlined" color="primary" className={classes.button} onClick={() => this.likeHandler(index)}>
+                                    </CardContent>.
+                                    <Button variant="outlined" color="primary" className={classes.button} onClick={() => this.props.likeHandler(index)}>
                                         {data.likes}
                                         <FavoriteIcon />
                                     </Button>

@@ -59,7 +59,7 @@ class Comments extends Component {
         this.state = {
             data: [],
             author: "",
-            comment:"",
+            comment: "",
             commentCounts: 0
         }
     }
@@ -73,48 +73,58 @@ class Comments extends Component {
 
     handleCommits = (e) => {
         if (e.charCode === 13) {
-            const {data, author,comment,commentCounts} = this.state
-            data.push({author:author,comment:comment})
+            const { data, author, comment, commentCounts } = this.state
+            data.push({ author: author, comment: comment })
             console.log(data)
             this.setState({
                 data,
                 author: "",
                 comment: "",
-                commentCounts : commentCounts + 1
+                commentCounts: commentCounts + 1
             })
         }
     }
 
     delete = (index) => {
-        const { data,commentCounts } = this.state
-        data.splice( index , 1);
+        const { data, commentCounts } = this.state
+        data.splice(index, 1);
         this.setState({
             data,
-            commentCounts : commentCounts - 1
+            commentCounts: commentCounts - 1
         })
     }
 
     render() {
-        const { classes } = this.props;
-        const { data,commentCounts } = this.state;
+        const { classes, post } = this.props;
+        const { data, commentCounts } = this.state;
         return (
             <div>
                 < Header />
                 <div className={classes.root}>
-                    <Card className={classes.card}>
-                        <CardMedia
-                            className={classes.media}
-                            image=""
-                            title="Media"
-                        />
-                        <Button variant="outlined" color="primary" className={classes.button}>
-                            <FavoriteIcon />
-                        </Button>
-                        <Button variant="outlined" color="primary" className={classes.button}>
-                            {commentCounts}<CommentIcon />
-                        </Button>
-                    </Card>
+                    {
+                        post.map((data, index) => {
+
+                            return (<Card className={classes.card} key={index}>
+                                <CardMedia
+                                    className={classes.media}
+                                    image={"/images/" + data.display_src}
+                                    title="Media"
+                                />
+                                <Button variant="outlined" color="primary" className={classes.button} onClick={() => this.props.likeHandler(index)}>
+                                    {data.likes}<FavoriteIcon />
+                                </Button>
+                                <Button variant="outlined" color="primary" className={classes.button}>
+                                    {commentCounts}<CommentIcon />
+                                </Button>
+                            </Card>)
+                        })}
                     <div>
+                        <div className={classes.commentBox} >
+                            <span className={classes.authorText}>Rani</span>
+                            <span>Wow :) what a nice place</span>
+                            <Delete onClick={this.delete} />
+                            <Divider />
+                        </div>
                         {data === [] ? null : data.map((comments, index) => {
                             return <div className={classes.commentBox} key={index}>
                                 <span className={classes.authorText}>{comments.author}</span>
@@ -123,30 +133,30 @@ class Comments extends Component {
                                 <Divider />
                             </div>
                         })}
-            
-                            <TextField
-                                id="outlined-dense"
-                                label="Author"
-                                className={classes.textField}
-                                margin="dense"
-                                variant="outlined"
-                                onKeyPress={this.handleCommits}
-                                onChange={this.handleChange}
-                                name="author"
-                                value = {this.state.author}
-                            />
-                            <TextField
-                                id="outlined-dense"
-                                label="Comment"
-                                className={classes.textField}
-                                margin="dense"
-                                variant="outlined"
-                                onChange={this.handleChange}
-                                name="comment"
-                                onKeyPress={this.handleCommits}
-                                value = {this.state.comment}
 
-                            />
+                        <TextField
+                            id="outlined-dense"
+                            label="Author"
+                            className={classes.textField}
+                            margin="dense"
+                            variant="outlined"
+                            onKeyPress={this.handleCommits}
+                            onChange={this.handleChange}
+                            name="author"
+                            value={this.state.author}
+                        />
+                        <TextField
+                            id="outlined-dense"
+                            label="Comment"
+                            className={classes.textField}
+                            margin="dense"
+                            variant="outlined"
+                            onChange={this.handleChange}
+                            name="comment"
+                            onKeyPress={this.handleCommits}
+                            value={this.state.comment}
+
+                        />
                     </div>
                 </div>
             </div>
