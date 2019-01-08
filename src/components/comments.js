@@ -101,23 +101,22 @@ class Comments extends Component {
             <div>
                 < Header />
                 <div className={classes.root}>
-                    {
-                        post.map((data, index) => {
 
-                            return (<Card className={classes.card} key={index}>
-                                <CardMedia
-                                    className={classes.media}
-                                    image={"/images/" + data.display_src}
-                                    title="Media"
-                                />
-                                <Button variant="outlined" color="primary" className={classes.button} onClick={() => this.props.likeHandler(index)}>
-                                    {data.likes}<FavoriteIcon />
-                                </Button>
-                                <Button variant="outlined" color="primary" className={classes.button}>
-                                    {commentCounts}<CommentIcon />
-                                </Button>
-                            </Card>)
-                        })}
+
+                    <Card className={classes.card} >
+                        <CardMedia
+                            className={classes.media}
+                            // image={"/images/" + data.display_src}
+                            title="Media"
+                        />
+                        <Button variant="outlined" color="primary" className={classes.button} onClick={() => this.props.likeHandler()}>
+                            {data.likes}<FavoriteIcon />
+                        </Button>
+                        <Button variant="outlined" color="primary" className={classes.button}>
+                            {commentCounts}<CommentIcon />
+                        </Button>
+                    </Card>
+
                     <div>
                         <div className={classes.commentBox} >
                             <span className={classes.authorText}>Rani</span>
