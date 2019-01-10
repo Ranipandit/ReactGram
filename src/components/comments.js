@@ -76,34 +76,35 @@ class Comments extends Component {
   // In handleComments function it will handle all the comments
   // The user will comment and also it will increase the number of comments
   //  It will save all the comments in commentData state
-  handleComments = e => {
-    if (e.charCode === 13) {
-      const { commentData, author, comment, commentCounts } = this.state;
-      commentData.push({ author: author, comment: comment });
-      console.log(commentData);
-      this.setState({
-        commentData,
-        author: "",
-        comment: "",
-        commentCounts: commentCounts + 1
-      });
-    }
-  };
+  // handleComments = e => {
+  //   if (e.charCode === 13) {
+  //     const { commentData, author, comment, commentCounts } = this.state;
+  //     commentData.push({ author: author, comment: comment });
+  //     console.log(commentData);
+  //     this.setState({
+  //       commentData,
+  //       author: "",
+  //       comment: "",
+  //       commentCounts: commentCounts + 1
+  //     });
+  //   }
+  // };
 
   // This function will delete the comments whenever the user will click on Delete
-  delete = index => {
-    const { commentData, commentCounts } = this.state;
-    commentData.splice(index, 1);
-    this.setState({
-      commentData,
-      commentCounts: commentCounts - 1
-    });
-  };
+  // delete = index => {
+  //   const { commentData, commentCounts } = this.state;
+  //   commentData.splice(index, 1);
+  //   this.setState({
+  //     commentData,
+  //     commentCounts: commentCounts - 1
+  //   });
+  // };
 
   render() {
-    const { classes, location } = this.props;
+    const { classes, location ,commentData} = this.props;
     const { data } = location.state;
-    const { commentData, commentCounts } = this.state;
+    console.log(this.props)
+    // const { commentData, commentCounts } = this.state;
     console.log(data)
     return (
       <div>
@@ -133,7 +134,7 @@ class Comments extends Component {
               color="primary"
               className={classes.button}
             >
-              {commentCounts}
+              {/* {commentCounts} */}
               <CommentIcon />
             </Button>
           </Card>
@@ -147,17 +148,17 @@ class Comments extends Component {
             </div>
             {/* if there is no data in the so it will return empty array else it will return 
             the data of author and comment */}
-            {commentData === []
+            {commentData[data.code] === []
               ? null
-              : commentData.map((comments, index) => {
+              : commentData[data.code].map((comment, index) => {
                   return (
                     <div className={classes.commentBox} key={index}>
                       <span className={classes.authorText}>
-                        {comments.author}
+                        {comment.user}
                       </span>
-                      <span>{comments.comment}</span>
-                      <Delete onClick={this.delete} />
-                      <Divider />
+                      <span>{comment.text}</span>
+                      {/* <Delete onClick={this.delete} />
+                      <Divider /> */}
                     </div>
                   );
                 })}
