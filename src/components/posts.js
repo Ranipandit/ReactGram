@@ -47,7 +47,7 @@ class Posts extends Component {
                 < Header />
                 <div className={classes.root}>
                     {
-                        post.map((data, index) => {
+                        post.map((data,index) => {
 
                             return (
                                 <Card className={classes.card} key={index}>
@@ -61,7 +61,7 @@ class Posts extends Component {
                                     </Link>
                                     <CardContent>
                                         <Typography component="p">{data.caption}</Typography>
-                                    </CardContent>.
+                                    </CardContent>
                                     <Button variant="outlined" color="primary" className={classes.button} onClick={() => this.props.likeHandler(index)}>
                                         {data.likes}
                                         <FavoriteIcon />
