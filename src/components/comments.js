@@ -101,9 +101,10 @@ class Comments extends Component {
   };
 
   render() {
-    const { classes, postIndex } = this.props;
+    const { classes, location } = this.props;
+    const { data } = location.state;
     const { commentData, commentCounts } = this.state;
-    console.log(postIndex)
+    console.log(data)
     return (
       <div>
         <Header />
@@ -112,19 +113,19 @@ class Comments extends Component {
           <Card className={classes.card}>
             <CardMedia
               className={classes.media}
-              image={"/images/" + postIndex.display_src}
+              image={"/images/" + data.display_src}
               title="Media"
             />
             <CardContent>
-              <Typography component="p">{postIndex.caption}</Typography>
+              <Typography component="p">{data.caption}</Typography>
             </CardContent>
             <Button
               variant="outlined"
               color="primary"
               className={classes.button}
-              onClick={() => this.props.likeHandler(postIndex)}
+              onClick={() => this.props.likeHandler(data)}
             >
-              {postIndex.likes}
+              {data.likes}
               <FavoriteIcon />
             </Button>
             <Button

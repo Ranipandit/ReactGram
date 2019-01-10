@@ -41,19 +41,26 @@ const styles = theme => ({
 class Posts extends Component {
   render() {
     const { classes, post } = this.props;
-    console.log(post)
+    console.log(post);
     return (
       <div>
         <Header />
         <div className={classes.root}>
           {// here I used map function to render all the data cards and there
           // data with image and caption
-              post.map((data, index) => {
-            console.log(data);
+          post.map((data, index) => {
             return (
               <Card className={classes.card} key={index}>
-                <Link to="/comments" className={classes.link}>
-                {/* used link to go to the comments component using routes */}
+                <Link
+                  to={{
+                    pathname: "/comments",
+                    state: {
+                      data: data
+                    }
+                  }}
+                  className={classes.link}
+                >
+                  {/* used link to go to the comments component using routes */}
                   <CardMedia
                     className={classes.media}
                     image={"/images/" + data.display_src}
@@ -67,13 +74,20 @@ class Posts extends Component {
                   variant="outlined"
                   color="primary"
                   className={classes.button}
-                  onClick={() => this.props.likeHandler(index)}
+                  onClick={() => this.props.likeHandler(data)}
                 >
                   {data.likes}
                   <FavoriteIcon />
                 </Button>
-                 {/* used link to go the routes of comments */}
-                <Link to={{ pathname:"/comments" , post: { data: data} }} >
+                {/* used link to go the routes of comments */}
+                <Link 
+                  to={{ 
+                    pathname: "/comments", 
+                    state: { 
+                      data: data 
+                    } 
+                  }}
+                >
                   <Button
                     variant="outlined"
                     color="primary"
