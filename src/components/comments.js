@@ -54,18 +54,20 @@ const styles = theme => ({
 });
 
 class Comments extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const { commentData, location } = props;
+    const { data } = location.state;
     this.state = {
-      commentData: [],
+      commentData: commentData,
+      data: data,
       author: "",
       comment: "",
-      commentCounts: 0
+      commentCounts: commentData[data.code] ? commentData[data.code].length : 0
     };
   }
 
   // handleChange is a function where I controlled the input fields
-
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -76,22 +78,26 @@ class Comments extends Component {
   // In handleComments function it will handle all the comments
   // The user will comment and also it will increase the number of comments
   //  It will save all the comments in commentData state
-  // handleComments = e => {
-  //   if (e.charCode === 13) {
-  //     const { commentData, author, comment, commentCounts } = this.state;
-  //     commentData.push({ author: author, comment: comment });
-  //     console.log(commentData);
-  //     this.setState({
-  //       commentData,
-  //       author: "",
-  //       comment: "",
-  //       commentCounts: commentCounts + 1
-  //     });
-  //   }
-  // };
+  handleComments = e => {
+    if (e.charCode === 13) {
+      const { commentData, author, comment, commentCounts, data } = this.state;
+      if(commentData[data.code] === undefined){
+        commentData[data.code] = []
+      }
+        
+      commentData[data.code].push({ text: comment, user: author });
+      console.log(commentData);
+      this.setState({
+        commentData,
+        author: "",
+        comment: "",
+        commentCounts: commentCounts + 1
+      });
+    }
+  };
 
-  // This function will delete the comments whenever the user will click on Delete
-  // delete = index => {
+  // // This function will delete the comments whenever the user will click on Delete
+  // deleteComments = index => {
   //   const { commentData, commentCounts } = this.state;
   //   commentData.splice(index, 1);
   //   this.setState({
@@ -101,16 +107,16 @@ class Comments extends Component {
   // };
 
   render() {
-    const { classes, location ,commentData} = this.props;
+    const { classes, location, commentData } = this.props;
     const { data } = location.state;
-    console.log(this.props)
-    // const { commentData, commentCounts } = this.state;
-    console.log(data)
+    const { commentCounts } = this.state;
+
+    console.log(this.props);
     return (
       <div>
         <Header />
         <div className={classes.root}>
-        {/* in this card component data is rendering by using the parents component  */}
+          {/* in this card component data is rendering by using the parents component  */}
           <Card className={classes.card}>
             <CardMedia
               className={classes.media}
@@ -134,7 +140,7 @@ class Comments extends Component {
               color="primary"
               className={classes.button}
             >
-              {/* {commentCounts} */}
+              {commentCounts}
               <CommentIcon />
             </Button>
           </Card>
@@ -153,12 +159,10 @@ class Comments extends Component {
               : commentData[data.code].map((comment, index) => {
                   return (
                     <div className={classes.commentBox} key={index}>
-                      <span className={classes.authorText}>
-                        {comment.user}
-                      </span>
-                      <span>{comment.text}</span>
-                      {/* <Delete onClick={this.delete} />
-                      <Divider /> */}
+                      <span className={classes.authorText}>{comment.user}</span>
+                      <div>{comment.text}</div>
+                      {/* <Delete onClick={this.deleteComments} /> */}
+                      {/* <Divider /> */}
                     </div>
                   );
                 })}
@@ -169,10 +173,10 @@ class Comments extends Component {
               className={classes.textField}
               margin="dense"
               variant="outlined"
-              onKeyPress={this.handleCommits}
-              onChange={this.handleChange}
+              onKeyPress={this.handleComments}
               name="author"
               value={this.state.author}
+              onChange={this.handleChange}
             />
             <TextField
               id="outlined-dense"
@@ -180,10 +184,10 @@ class Comments extends Component {
               className={classes.textField}
               margin="dense"
               variant="outlined"
-              onChange={this.handleChange}
               name="comment"
               onKeyPress={this.handleComments}
               value={this.state.comment}
+              onChange={this.handleChange}
             />
           </div>
         </div>
