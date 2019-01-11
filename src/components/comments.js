@@ -35,8 +35,8 @@ const styles = theme => ({
   },
   button: {
     margin: theme.spacing.unit * 2,
-    paddingLeft: theme.spacing.unit * 6,
-    paddingRight: theme.spacing.unit * 6,
+    paddingLeft: theme.spacing.unit * 4,
+    paddingRight: theme.spacing.unit * 4,
     border: "1px solid rgba(182, 185, 199, 0.5)",
     color: "#5e47e0"
   },
@@ -83,8 +83,7 @@ class Comments extends Component {
       const { commentData, author, comment, commentCounts, data } = this.state;
       if(commentData[data.code] === undefined){
         commentData[data.code] = []
-      }
-        
+      }        
       commentData[data.code].push({ text: comment, user: author });
       console.log(commentData);
       this.setState({
@@ -146,12 +145,6 @@ class Comments extends Component {
           </Card>
 
           <div>
-            <div className={classes.commentBox}>
-              <span className={classes.authorText}>Rani</span>
-              <span>Wow :) what a nice place</span>
-              <Delete />
-              <Divider />
-            </div>
             {/* if there is no data in the so it will return empty array else it will return 
             the data of author and comment */}
             {commentData[data.code] === undefined
@@ -160,7 +153,7 @@ class Comments extends Component {
                   return (
                     <div className={classes.commentBox} key={index}>
                       <span className={classes.authorText}>{comment.user}</span>
-                      <div>{comment.text}</div>
+                      <span>{comment.text}</span>
                       {/* <Delete onClick={this.deleteComments} /> */}
                       {/* <Divider /> */}
                     </div>
