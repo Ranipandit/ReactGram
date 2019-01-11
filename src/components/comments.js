@@ -148,7 +148,7 @@ class Comments extends Component {
             </div>
             {/* if there is no data in the so it will return empty array else it will return 
             the data of author and comment */}
-            {commentData[data.code] === []
+            {commentData[data.code] === undefined
               ? null
               : commentData[data.code].map((comment, index) => {
                   return (
