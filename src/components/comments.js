@@ -83,7 +83,6 @@ class Comments extends Component {
       const { commentData, author, comment, commentCounts, data } = this.state;
       if(commentData[data.code] === undefined){
         commentData[data.code] = []
-        
       }        
       commentData[data.code].push({ text: comment, user: author });
       console.log(commentData);
