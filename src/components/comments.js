@@ -95,15 +95,15 @@ class Comments extends Component {
     }
   };
 
-  // // This function will delete the comments whenever the user will click on Delete
-  // deleteComments = index => {
-  //   const { commentData, commentCounts } = this.state;
-  //   commentData.splice(index, 1);
-  //   this.setState({
-  //     commentData,
-  //     commentCounts: commentCounts - 1
-  //   });
-  // };
+  // This function will delete the comments whenever the user will click on Delete
+  deleteComments = index => {
+    const { commentData, commentCounts } = this.state;
+    commentData.splice(index, 1);
+    this.setState({
+      commentData,
+      commentCounts: commentCounts - 1
+    });
+  };
 
   render() {
     const { classes, location, commentData } = this.props;
