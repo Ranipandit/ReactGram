@@ -12,6 +12,7 @@ import Delete from "@material-ui/icons/Clear";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
+
 import Header from "./header";
 
 const styles = theme => ({
@@ -49,7 +50,8 @@ const styles = theme => ({
     padding: theme.spacing.unit
   },
   commentBox: {
-    margin: theme.spacing.unit * 4
+    margin: theme.spacing.unit * 4,
+    maxWidth:600
   }
 });
 
@@ -154,8 +156,8 @@ class Comments extends Component {
                     <div className={classes.commentBox} key={index}>
                       <span className={classes.authorText}>{comment.user}</span>
                       <span>{comment.text}</span>
-                      {/* <Delete onClick={this.deleteComments} /> */}
-                      {/* <Divider /> */}
+                      {/* <Delete onClick={this.deleteComments} />
+                      <Divider /> */}
                     </div>
                   );
                 })}
