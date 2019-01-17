@@ -34,13 +34,23 @@ const styles = theme => ({
     paddingLeft: theme.spacing.unit * 6,
     paddingRight: theme.spacing.unit * 6,
     border: "1px solid rgba(182, 185, 199, 0.5)",
-    color: "#5e47e0"
+    color: "#5e47e0",
   }
 });
 
 class Posts extends Component {
+  // constructor(props) {
+  //   super(props)
+  //   const { commentData,post } = props
+  //   this.state = {
+  //     commentData,
+  //     post,
+  //     commentCounts: commentData[post.code] ? commentData[post.code].length : 0
+  //   }
+  //   console.log(commentData[post.code])
+  // }
   render() {
-    const { classes, post } = this.props;
+    const { classes, post, commentData } = this.props;
     console.log(post);
     return (
       <div>
@@ -55,10 +65,11 @@ class Posts extends Component {
                   to={{
                     pathname: "/comments",
                     state: {
-                      data: data
+                      data: data,
+                      commentCounts:commentData[data.code] ? commentData[data.code].length : 0
+
                     }
                   }}
-                  className={classes.link}
                 >
                   {/* used link to go to the comments component using routes */}
                   <CardMedia
@@ -84,7 +95,8 @@ class Posts extends Component {
                   to={{ 
                     pathname: "/comments", 
                     state: { 
-                      data: data 
+                      data: data,
+                      commentCounts:commentData[data.code] ? commentData[data.code].length : 0
                     } 
                   }}
                 >
@@ -93,6 +105,7 @@ class Posts extends Component {
                     color="primary"
                     className={classes.button}
                   >
+                  { commentData[data.code] ? commentData[data.code].length : 0 }
                     <CommentIcon />
                   </Button>
                 </Link>

@@ -11,7 +11,7 @@ import Divider from "@material-ui/core/Divider";
 import Delete from "@material-ui/icons/Clear";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-
+import { Link } from "react-router-dom";
 
 import Header from "./header";
 
@@ -34,6 +34,9 @@ const styles = theme => ({
     width: "500px",
     paddingTop: "100%"
   },
+  backButton: {
+    margin: theme.spacing.unit
+  },
   button: {
     margin: theme.spacing.unit * 2,
     paddingLeft: theme.spacing.unit * 4,
@@ -51,7 +54,7 @@ const styles = theme => ({
   },
   commentBox: {
     margin: theme.spacing.unit * 4,
-    maxWidth:600
+    maxWidth: 600
   }
 });
 
@@ -59,13 +62,13 @@ class Comments extends Component {
   constructor(props) {
     super(props);
     const { commentData, location } = props;
-    const { data } = location.state;
+    const { data,commentCounts } = location.state;
     this.state = {
       commentData: commentData,
       data: data,
       author: "",
       comment: "",
-      commentCounts: commentData[data.code] ? commentData[data.code].length : 0
+      commentCounts: commentCounts
     };
   }
 
@@ -83,9 +86,9 @@ class Comments extends Component {
   handleComments = e => {
     if (e.charCode === 13) {
       const { commentData, author, comment, commentCounts, data } = this.state;
-      if(commentData[data.code] === undefined){
-        commentData[data.code] = []
-      }        
+      if (commentData[data.code] === undefined) {
+        commentData[data.code] = [];
+      }
       commentData[data.code].push({ text: comment, user: author });
       console.log(commentData);
       this.setState({
@@ -118,7 +121,18 @@ class Comments extends Component {
         <Header />
         <div className={classes.root}>
           {/* in this card component data is rendering by using the parents component  */}
+
           <Card className={classes.card}>
+            <Link to="/">
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.backButton}
+              >
+                Back
+              </Button>
+            </Link>
+
             <CardMedia
               className={classes.media}
               image={"/images/" + data.display_src}

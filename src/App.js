@@ -34,6 +34,7 @@ class App extends Component {
               <Posts
                 likeHandler={this.likeHandler}
                 post={this.state.post}
+                commentData = {this.state.commentData}
                 {...props}
               />
             )}
