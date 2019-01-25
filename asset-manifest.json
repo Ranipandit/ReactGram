@@ -1,13 +1,13 @@
 {
-  "main.css": "/reactgram/static/css/main.1776210d.chunk.css",
-  "main.js": "/reactgram/static/js/main.82361a98.chunk.js",
-  "main.js.map": "/reactgram/static/js/main.82361a98.chunk.js.map",
-  "static/js/1.4a8eb3b5.chunk.js": "/reactgram/static/js/1.4a8eb3b5.chunk.js",
-  "static/js/1.4a8eb3b5.chunk.js.map": "/reactgram/static/js/1.4a8eb3b5.chunk.js.map",
-  "runtime~main.js": "/reactgram/static/js/runtime~main.215f249c.js",
-  "runtime~main.js.map": "/reactgram/static/js/runtime~main.215f249c.js.map",
-  "static/css/main.1776210d.chunk.css.map": "/reactgram/static/css/main.1776210d.chunk.css.map",
-  "index.html": "/reactgram/index.html",
-  "precache-manifest.4cb6ef84fe3a58c2f2dd74b8eb1430fb.js": "/reactgram/precache-manifest.4cb6ef84fe3a58c2f2dd74b8eb1430fb.js",
-  "service-worker.js": "/reactgram/service-worker.js"
+  "main.css": "/ReactGram/static/css/main.1776210d.chunk.css",
+  "main.js": "/ReactGram/static/js/main.cd0a0bce.chunk.js",
+  "main.js.map": "/ReactGram/static/js/main.cd0a0bce.chunk.js.map",
+  "static/js/1.4a8eb3b5.chunk.js": "/ReactGram/static/js/1.4a8eb3b5.chunk.js",
+  "static/js/1.4a8eb3b5.chunk.js.map": "/ReactGram/static/js/1.4a8eb3b5.chunk.js.map",
+  "runtime~main.js": "/ReactGram/static/js/runtime~main.7ab089be.js",
+  "runtime~main.js.map": "/ReactGram/static/js/runtime~main.7ab089be.js.map",
+  "static/css/main.1776210d.chunk.css.map": "/ReactGram/static/css/main.1776210d.chunk.css.map",
+  "index.html": "/ReactGram/index.html",
+  "precache-manifest.197842f45b3169280f90eb798a34df75.js": "/ReactGram/precache-manifest.197842f45b3169280f90eb798a34df75.js",
+  "service-worker.js": "/ReactGram/service-worker.js"
 }
