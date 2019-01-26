@@ -25,7 +25,7 @@ class App extends Component {
     // this is the main component where the Post and Comment routes are their.
     // Here using lifting state up to pass the data parent data while clicking on child component.
     return (
-      <Router>
+      <Router basename="ReactGram">
         <div>
           <Route
             exact
