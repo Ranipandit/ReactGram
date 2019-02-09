@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "eaef86b2e27490068c75",
+    "revision": "728c0609453c7e7d1542",
     "url": "/ReactGram/static/css/main.1776210d.chunk.css"
   },
   {
-    "revision": "eaef86b2e27490068c75",
-    "url": "/ReactGram/static/js/main.eaef86b2.chunk.js"
+    "revision": "728c0609453c7e7d1542",
+    "url": "/ReactGram/static/js/main.728c0609.chunk.js"
   },
   {
     "revision": "4a8eb3b5748034147aec",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/ReactGram/static/js/runtime~main.7ab089be.js"
   },
   {
-    "revision": "e02d733fb537aaf32570a4371ba96c8c",
+    "revision": "3efbdcaa60e0aba8b968d0f78304a043",
     "url": "/ReactGram/index.html"
   }
 ];
