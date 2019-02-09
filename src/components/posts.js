@@ -67,10 +67,9 @@ class Posts extends Component {
                   {/* used link to go to the comments component using routes */}
                   <CardMedia
                     className={classes.media}
-                    image={"/images/" + data.display_src}
+                    image={"images/" + data.display_src}
                     title="Media"
                   />
-                  
                 </Link>
                 <CardContent>
                   <Typography component="p">{data.caption}</Typography>

@@ -138,7 +138,7 @@ class Comments extends Component {
 
             <CardMedia
               className={classes.media}
-              image={"/images/" + data.display_src}
+              image={"images/" + data.display_src}
               title="Media"
             />
             <CardContent>
