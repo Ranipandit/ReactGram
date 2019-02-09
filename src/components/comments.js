@@ -37,6 +37,9 @@ const styles = theme => ({
   backButton: {
     margin: theme.spacing.unit
   },
+  backLink: {
+    textDecoration: 'none',
+  },
   button: {
     margin: theme.spacing.unit * 2,
     paddingLeft: theme.spacing.unit * 4,
@@ -123,7 +126,7 @@ class Comments extends Component {
           {/* in this card component data is rendering by using the parents component  */}
 
           <Card className={classes.card}>
-            <Link to="/">
+            <Link to="/" className={classes.backLink}>
               <Button
                 variant="contained"
                 color="primary"
@@ -135,7 +138,7 @@ class Comments extends Component {
 
             <CardMedia
               className={classes.media}
-              image={"images/" + data.display_src}
+              image={"/images/" + data.display_src}
               title="Media"
             />
             <CardContent>

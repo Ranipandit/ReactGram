@@ -35,20 +35,13 @@ const styles = theme => ({
     paddingRight: theme.spacing.unit * 6,
     border: "1px solid rgba(182, 185, 199, 0.5)",
     color: "#5e47e0",
+  },
+  commentsButton: {
+    textDecoration: 'none',
   }
 });
 
 class Posts extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   const { commentData,post } = props
-  //   this.state = {
-  //     commentData,
-  //     post,
-  //     commentCounts: commentData[post.code] ? commentData[post.code].length : 0
-  //   }
-  //   console.log(commentData[post.code])
-  // }
   render() {
     const { classes, post, commentData } = this.props;
     console.log(post);
@@ -74,7 +67,7 @@ class Posts extends Component {
                   {/* used link to go to the comments component using routes */}
                   <CardMedia
                     className={classes.media}
-                    image={"images/" + data.display_src}
+                    image={"/images/" + data.display_src}
                     title="Media"
                   />
                 </Link>
@@ -92,6 +85,7 @@ class Posts extends Component {
                 </Button>
                 {/* used link to go the routes of comments */}
                 <Link 
+                  className={classes.commentsButton}
                   to={{ 
                     pathname: "/comments", 
                     state: { 
