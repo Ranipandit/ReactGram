@@ -70,6 +70,7 @@ class Posts extends Component {
                     image={"/images/" + data.display_src}
                     title="Media"
                   />
+                  
                 </Link>
                 <CardContent>
                   <Typography component="p">{data.caption}</Typography>
