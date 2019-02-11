@@ -1,6 +1,6 @@
 # Reactgram
 
-Responsive web-based Instagram clone with Like & comment features.
+Responsive web-based Instagram clone with Like & comment Features.
 
 ## Available Scripts
 
